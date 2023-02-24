@@ -1,0 +1,28 @@
+steps:
+- id: 'repo-conn-id'
+  name: 'alpine'
+  entrypoint: 'sh'  
+
+# [tf-init where .yaml file is in same directory]
+- id: 'tf init'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - terraform init
+
+# [tf-plan]
+- id: 'tf plan'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - terraform plan
+
+# [tf-apply]
+- id: 'tf apply'
+  name: 'hashicorp/terraform:1.0.0'
+  entrypoint: 'sh'
+  args: 
+  - '-c'
+  - terraform apply -auto-approve
