@@ -2,3 +2,5 @@ secret-var.tf
 *.tfstate.*
 *.tfstate
 *.tfvars
+*.terraform.*
+credentials.json
