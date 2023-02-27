@@ -1,6 +1,4 @@
-variable "project" {
-    default = "gcp-cicd-pipeline-377905"
-}
+variable "project" {}
 
 variable "region" {
     default = "asia-south1"
