@@ -1,7 +1,14 @@
 steps:
-- id: 'repo-conn-id'
+- id: 'branch-name'
   name: 'alpine'
-  entrypoint: 'sh'  
+  entrypoint: 'sh'
+  args:
+  - '-c'
+  - | 
+      echo "***********************"
+      echo "$BRANCH_NAME"
+      echo "***********************"
+  
 
 # [tf-init where .yaml file is in same directory]
 - id: 'tf init'
@@ -9,7 +16,10 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - terraform init
+  - |
+    -d "$BRANCH_NAME"
+    terraform init
+  
 
 # [tf-plan]
 - id: 'tf plan'
@@ -17,7 +27,9 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - terraform plan
+  - |
+    -d "$BRANCH_NAME"
+    terraform plan
 
 # [tf-apply]
 - id: 'tf apply'
@@ -25,4 +37,6 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - terraform apply -auto-approve
+  - |
+    -d "$BRANCH_NAME"
+    terraform apply -auto-approve
