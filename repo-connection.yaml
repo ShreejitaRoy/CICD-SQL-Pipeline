@@ -17,7 +17,7 @@ steps:
   args: 
   - '-c'
   - |
-    -d "$BRANCH_NAME"
+    if[-d "$BRANCH_NAME"]; then
     terraform init
   
 
