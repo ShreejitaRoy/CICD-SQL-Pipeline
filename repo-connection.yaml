@@ -2,23 +2,14 @@ steps:
 - id: 'branch-name'
   name: 'alpine'
   entrypoint: 'sh'
-  args:
-  - '-c'
-  - | 
-      echo "***********************"
-      echo "$BRANCH_NAME"
-      echo "***********************"
   
-
 # [tf-init where .yaml file is in same directory]
 - id: 'tf init'
   name: 'hashicorp/terraform:1.0.0'
   entrypoint: 'sh'
   args: 
   - '-c'
-  - |
-    if[-d "$BRANCH_NAME"]; then
-    terraform init
+  - terraform init
   
 
 # [tf-plan]
@@ -27,9 +18,7 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - |
-    -d "$BRANCH_NAME"
-    terraform plan
+  - terraform plan
 
 # [tf-apply]
 - id: 'tf apply'
@@ -37,6 +26,4 @@ steps:
   entrypoint: 'sh'
   args: 
   - '-c'
-  - |
-    -d "$BRANCH_NAME"
-    terraform apply -auto-approve
+  - terraform apply -auto-approve
