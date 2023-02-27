@@ -18,4 +18,4 @@ resource "google_sql_user" "users" {
   name     = var.name
   password = var.password
   instance = google_sql_database_instance.instance.name
-} 
+}  
