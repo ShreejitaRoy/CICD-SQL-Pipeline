@@ -6,6 +6,6 @@ variable "region" {
     default = "asia-south1"
 }
 
-variable "sql_insyance_name" {
+variable "sql_instance_name" {
     default = "tf-sql-instance"
 }
