@@ -5,3 +5,7 @@ variable "project" {
 variable "region" {
     default = "asia-south1"
 }
+
+variable "sql_insyance_name" {
+    default = "tf-sql-instance"
+}

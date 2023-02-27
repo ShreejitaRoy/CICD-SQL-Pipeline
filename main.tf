@@ -5,7 +5,7 @@ resource "google_sql_database" "database" {
 
 
 resource "google_sql_database_instance" "instance" {
-  name             = "tf-sql-instance"
+  name             = var.sql_instance_name
   region           = "asia-south1"
   database_version = "POSTGRES_14"
   settings {
